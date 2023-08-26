@@ -1,30 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
-
-interface ITaskProps {
-  id: string;
-  title: string;
-  state: "TASK_ARCHIVED" | "TASK_PINNED" | "TASK_INBOX";
-}
-
-interface ITaskWrapperProps {
-  /**
-   * Value for task property
-   *
-   * @default null
-   */
-  task: ITaskProps;
-
-  /**
-   * Buat ngarsip
-   */
-  onArchiveTask: (value: string) => void;
-
-  /**
-   * Kalo dipin
-   */
-  onPinTask: (value: string) => void;
-}
+import { ITaskWrapperProps } from "../interfaces";
 
 export default function Task({
   task: { id, title, state },
@@ -72,19 +47,3 @@ export default function Task({
     </div>
   );
 }
-
-Task.propTypes = {
-  /** Composition of the task */
-  task: PropTypes.shape({
-    /** Id of the task */
-    id: PropTypes.string.isRequired,
-    /** Title of the task */
-    title: PropTypes.string.isRequired,
-    /** Current state of the task */
-    state: PropTypes.string.isRequired,
-  }),
-  /** Event to change the task to archived */
-  onArchiveTask: PropTypes.func,
-  /** Event to change the task to pinned */
-  onPinTask: PropTypes.func,
-};
